@@ -1,11 +1,14 @@
 package com.kunminx.architecture.data.config.store;
 
+import android.app.Application;
 import androidx.annotation.NonNull;
 
 /**
  * Create by KunMinX at 2022/7/19
  */
 public interface KeyValueTool {
+
+  void init(@NonNull Application application);
 
   void init(@NonNull String moduleName);
 
