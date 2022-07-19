@@ -1,9 +1,7 @@
 package com.kunminx.keyvalue.store;
 
-import android.app.Application;
 import android.util.Log;
 import androidx.annotation.NonNull;
-import com.getkeepsafe.relinker.ReLinker;
 import com.kunminx.architecture.data.config.store.KeyValueTool;
 import com.tencent.mmkv.MMKV;
 import com.tencent.mmkv.MMKVContentChangeNotification;
@@ -16,19 +14,9 @@ import com.tencent.mmkv.MMKVRecoverStrategic;
  */
 public class MMKVKeyValueTool implements KeyValueTool, MMKVHandler, MMKVContentChangeNotification {
 
-  @Override public void init(@NonNull Application application) {
-    //String rootDir = MMKV.initialize(application);
-    //System.out.println("mmkv root: " + rootDir);
+  MMKV mmkv;
 
-    String dir = application.getFilesDir().getAbsolutePath() + "/mmkv";
-    String rootDir = MMKV.initialize(application, dir, new MMKV.LibLoader() {
-      @Override
-      public void loadLibrary(String libName) {
-        ReLinker.loadLibrary(application, libName);
-      }
-    }, MMKVLogLevel.LevelInfo);
-    Log.i("MMKV", "mmkv root: " + rootDir);
-
+  @Override public void init(@NonNull String moduleName) {
     // set log level
     MMKV.setLogLevel(MMKVLogLevel.LevelInfo);
 
@@ -40,60 +28,58 @@ public class MMKVKeyValueTool implements KeyValueTool, MMKVHandler, MMKVContentC
 
     // content change notification
     MMKV.registerContentChangeNotify(this);
-  }
 
-  @Override public void init(@NonNull String moduleName) {
-    // ignore
+    mmkv = MMKV.mmkvWithID(moduleName);
   }
 
   @Override
   public void put(@NonNull String keyName, Integer i) {
-    MMKV.defaultMMKV().putInt(keyName, i);
+    mmkv.putInt(keyName, i);
   }
 
   @Override
   public void put(@NonNull String keyName, Long l) {
-    MMKV.defaultMMKV().putLong(keyName, l);
+    mmkv.putLong(keyName, l);
   }
 
   @Override
   public void put(@NonNull String keyName, Float f) {
-    MMKV.defaultMMKV().putFloat(keyName, f);
+    mmkv.putFloat(keyName, f);
   }
 
   @Override
   public void put(@NonNull String keyName, Boolean b) {
-    MMKV.defaultMMKV().putBoolean(keyName, b);
+    mmkv.putBoolean(keyName, b);
   }
 
   @Override
   public void put(@NonNull String keyName, String s) {
-    MMKV.defaultMMKV().putString(keyName, s);
+    mmkv.putString(keyName, s);
   }
 
   @Override
   public Integer getInteger(@NonNull String keyName) {
-    return MMKV.defaultMMKV().getInt(keyName, 0);
+    return mmkv.getInt(keyName, 0);
   }
 
   @Override
   public Long getLong(@NonNull String keyName) {
-    return MMKV.defaultMMKV().getLong(keyName, 0);
+    return mmkv.getLong(keyName, 0);
   }
 
   @Override
   public Float getFloat(@NonNull String keyName) {
-    return MMKV.defaultMMKV().getFloat(keyName, 0f);
+    return mmkv.getFloat(keyName, 0f);
   }
 
   @Override
   public Boolean getBoolean(@NonNull String keyName) {
-    return MMKV.defaultMMKV().getBoolean(keyName, false);
+    return mmkv.getBoolean(keyName, false);
   }
 
   @Override
   public String getString(@NonNull String keyName) {
-    return MMKV.defaultMMKV().getString(keyName, "");
+    return mmkv.getString(keyName, "");
   }
 
   @Override public void onContentChangedByOuterProcess(String mmapID) {
