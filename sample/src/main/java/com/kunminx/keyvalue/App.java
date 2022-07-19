@@ -2,6 +2,7 @@ package com.kunminx.keyvalue;
 
 import android.app.Application;
 import android.util.Log;
+
 import com.kunminx.architecture.data.config.KeyValueConfigs;
 import com.kunminx.keyvalue.data.config.store.MMKVKeyValueTool;
 import com.tencent.mmkv.MMKV;
@@ -9,7 +10,8 @@ import com.tencent.mmkv.MMKVLogLevel;
 
 public class App extends Application {
 
-  @Override public void onCreate() {
+  @Override
+  public void onCreate() {
     super.onCreate();
 
     String dir = getFilesDir().getAbsolutePath() + "/mmkv";
@@ -19,12 +21,13 @@ public class App extends Application {
     MMKVKeyValueTool mmkvTool = new MMKVKeyValueTool();
 
     // 模块名根据实际情况配置，消除模块间 keyValue 冲突
-    mmkvTool.init("sample");
+    mmkvTool.init(BuildConfig.APPLICATION_ID);
 
     KeyValueConfigs.setKeyValueTools(mmkvTool);
   }
 
-  @Override public void onTerminate() {
+  @Override
+  public void onTerminate() {
     MMKV.onExit();
     super.onTerminate();
   }

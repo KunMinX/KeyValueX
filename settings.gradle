@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Easy-KeyValue"
-include ':app'
+include ':sample'
 include ':keyvalue'
