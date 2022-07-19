@@ -6,13 +6,36 @@ Key Value 定义几十上百个是常见事，目前有更简便方法么，
 
 此为项目中为数不多不受控制之地，指数膨胀，且易埋下一致性隐患，
 
-每新增一 key，需兼顾 value、get、put、init，5 处 …
+每新增一 value，需兼顾 key、get、put、init，5 处 …
 
-![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4cjlhwn5zj20u0111q8q.jpg)
+```java
+public class Configs {
+  
+  ...
+    
+  private static int TEST_ID;
+  
+  public final static String KEY_TEST_ID = "KEY_TEST_ID";
+  
+  public static void setTestId(int id) {
+    TEST_ID = id;
+    SPUtils.getInstance().put(KEY_TEST_ID, id);
+  }
+  
+  public static int getTestId() {
+    if (IS_XXXX()) return TEST_ID;
+    return UUID.ramdom().toString();
+  }
+  
+  public static void initConfigs() {
+    TEST_ID = SPUtils.getInstance().getInt(KEY_TEST_ID, 0);
+  }
+}
+```
 
-随后陆续收到改善建议，有小伙伴提到 “属性代理”，并推荐了群友 DylanCai 开源库 https://github.com/DylanCaiCoding/MMKV-KTX
+随后陆续收到改善建议，有小伙伴提到 “属性代理”，并推荐了群友 DylanCai 开源库 [MMKV-KTX](https://github.com/DylanCaiCoding/MMKV-KTX)
 
-![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4c5rrtf8aj20ta0swmz7.jpg)
+![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4ckaupquaj214o0swwh3.jpg)
 
 与此同时，受 “属性代理” 启发，本人萌生 Java 下 key、value、get、put、init 缩减为一设计。
 
