@@ -6,10 +6,8 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.kunminx.architecture.data.config.keyvalue.KeyValueSerializable;
-import com.kunminx.architecture.data.config.keyvalue.KeyValueString;
-
-import java.io.Serializable;
+import com.kunminx.purenote.data.Configs;
+import com.kunminx.purenote.data.bean.User;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,21 +16,17 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    KeyValueString username = new KeyValueString("username");
-//    username.set("hahaha");
-//    Log.d("---", username.get());
+    User u = new User();
+    u.title = "title1";
+    u.content = "content1";
 
-    KeyValueSerializable<TestSerializable> testSerialize = new KeyValueSerializable<>("testParcelable");
-    TestSerializable tp = new TestSerializable();
-    tp.title = "title1";
-    tp.content = "content1";
-    testSerialize.set(tp);
-    Log.d("---title", testSerialize.get().title);
-    Log.d("---content", testSerialize.get().content);
-  }
+    findViewById(R.id.btn_write).setOnClickListener(v -> {
+      Configs.user.set(u);
+    });
 
-  public static class TestSerializable implements Serializable {
-    public String title;
-    public String content;
+    findViewById(R.id.btn_read).setOnClickListener(v -> {
+      Log.d("---title", Configs.user.get().title);
+      Log.d("---content", Configs.user.get().content);
+    });
   }
 }
