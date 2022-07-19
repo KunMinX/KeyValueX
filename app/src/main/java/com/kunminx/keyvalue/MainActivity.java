@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     //默认 SP 读写。可注入自定义 KV 读写工具，例如 MMKV
     //MMKV.initialize(this);
-//    MMKVTool mmkvTool=new MMKVTool();
+//    MMKVTool mmkvTool = new MMKVTool();
 //    mmkvTool.init(...模块名);
 //    KeyValueConfigs.setKeyValueTools(mmkvTool);
 

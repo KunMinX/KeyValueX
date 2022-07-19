@@ -1,7 +1,6 @@
 package com.kunminx.architecture.data.config.store;
 
 import androidx.annotation.NonNull;
-
 import com.kunminx.architecture.data.config.utils.SPUtils;
 
 /**
