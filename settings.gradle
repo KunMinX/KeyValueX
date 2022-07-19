@@ -12,6 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Easy-KeyValue"
+rootProject.name = "KeyValueX"
 include ':sample'
 include ':keyvalue'

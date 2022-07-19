@@ -1,24 +1,20 @@
-> Easy-KeyValue：像 Kotlin “属性代理” 一样简明易用，使 Android Java 项目 key、value、get、put、init 缩减为一，不再 “KV 满天飞”。
-
-&nbsp;
-
 # 背景
 
 源于深夜一段独白：
 
-Key Value 定义几十上百个是很常见的事，目前有更简便方法么，
+Key Value 定义几十上百个是常见事，目前有更简便方法么，
 
 此为项目中为数不多不受控制之地，指数膨胀，且易埋下一致性隐患，
 
 每新增一 key，需兼顾 value、get、put、init，5 处 …
 
-![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4c5mrfb32j21dq0rgn43.jpg)
+![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4cjlhwn5zj20u0111q8q.jpg)
 
 随后陆续收到改善建议，有小伙伴提到 “属性代理”，并推荐了群友 DylanCai 开源库 https://github.com/DylanCaiCoding/MMKV-KTX
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4c5rrtf8aj20ta0swmz7.jpg)
 
-与此同时，受 “属性代理” 启发，本人萌生在 Java 下将 key、value、get、put、init 缩减为一设计。
+与此同时，受 “属性代理” 启发，本人萌生 Java 下 key、value、get、put、init 缩减为一设计。
 
 &nbsp;
 
@@ -51,14 +47,14 @@ public class Configs {
 }
 ```
 
-3.在页面等处通过 get( ) set( ) 接口读写 KeyValue
+3.在页面等处通过 get( ) set( ) 方法读写 KeyValue
 
 ```java
 public class MainActivity extends AppCompatActivity {
   ...
-          
-  //测试持久化写入
-  Configs.user.set(u);
+
+          //测试持久化写入
+          Configs.user.set(u);
 
   //测试读取
   Log.d("---title", Configs.user.get().title);
@@ -66,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-Easy-KeyValue 默认使用 SharedPreference 读写，可根据 KeyValueTool 自行注入 MMKV 等实现（详见 MainActivity 示例）。
+KeyValueX 默认使用 SharedPreference 读写，可根据 KeyValueTool 自行注入 MMKV 等实现（详见 MainActivity 示例）。
 
 &nbsp;
 
