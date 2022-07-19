@@ -2,7 +2,7 @@ package com.kunminx.architecture.data.config;
 
 import com.kunminx.architecture.data.config.store.DefaultKeyValueTool;
 import com.kunminx.architecture.data.config.store.KeyValueTool;
-import com.kunminx.keyvalue.BuildConfig;
+import com.kunminx.architecture.BuildConfig;
 
 /**
  * Create by KunMinX at 2022/7/19

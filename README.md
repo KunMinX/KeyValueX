@@ -67,7 +67,7 @@ Easy-KeyValue 默认使用 SharedPreference 读写，后期可根据 KeyValueToo
 目前该库已开源，欢迎诸位试用反馈：
 
 ```
-implementation 'com.kunminx.arch:key-value:1.1.0-beta'
+implementation 'com.kunminx.arch:key-value:1.2.0-beta'
 ```
 
 &nbsp;
