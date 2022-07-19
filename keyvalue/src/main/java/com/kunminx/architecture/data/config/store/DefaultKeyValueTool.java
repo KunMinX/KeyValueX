@@ -1,6 +1,5 @@
 package com.kunminx.architecture.data.config.store;
 
-import android.app.Application;
 import androidx.annotation.NonNull;
 import com.kunminx.architecture.data.config.utils.SPUtils;
 
@@ -10,10 +9,6 @@ import com.kunminx.architecture.data.config.utils.SPUtils;
 public class DefaultKeyValueTool implements KeyValueTool {
 
   private SPUtils mSPUtils;
-
-  @Override public void init(@NonNull Application application) {
-    // ignore
-  }
 
   public void init(@NonNull String moduleName) {
     mSPUtils = SPUtils.getInstance(moduleName);
