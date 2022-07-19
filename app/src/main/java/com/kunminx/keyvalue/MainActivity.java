@@ -20,11 +20,7 @@ public class MainActivity extends AppCompatActivity {
     u.title = "title1";
     u.content = "content1";
 
-    //默认 SP 读写。可注入自定义 KV 读写工具，例如 MMKV
-    //MMKV.initialize(this);
-//    MMKVTool mmkvTool = new MMKVTool();
-//    mmkvTool.init(...模块名);
-//    KeyValueConfigs.setKeyValueTools(mmkvTool);
+    //默认 SP 读写。可注入自定义 KV 读写工具，例如 MMKV 详见 App.java
 
     findViewById(R.id.btn_write).setOnClickListener(v -> {
       Configs.user.set(u);

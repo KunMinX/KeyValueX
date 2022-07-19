@@ -1,4 +1,4 @@
-package com.kunminx.keyvalue.store;
+package com.kunminx.keyvalue.data.config.store;
 
 import android.util.Log;
 import androidx.annotation.NonNull;
@@ -14,7 +14,7 @@ import com.tencent.mmkv.MMKVRecoverStrategic;
  */
 public class MMKVKeyValueTool implements KeyValueTool, MMKVHandler, MMKVContentChangeNotification {
 
-  MMKV mmkv;
+  private MMKV mmkv;
 
   @Override public void init(@NonNull String moduleName) {
     // set log level
