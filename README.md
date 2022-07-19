@@ -14,7 +14,7 @@ Key Value 定义几十上百个是很常见的事，目前有更简便方法么�
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4c5mrfb32j21dq0rgn43.jpg)
 
-随后陆续收到改善建议，有小伙伴提到 “属性代理”，并推荐了群友 DylanCai 开源库 https://github.com/DylanCaiCoding/MMKV-KTX，
+随后陆续收到改善建议，有小伙伴提到 “属性代理”，并推荐了群友 DylanCai 开源库 https://github.com/DylanCaiCoding/MMKV-KTX
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4c5rrtf8aj20ta0swmz7.jpg)
 
@@ -24,7 +24,7 @@ Key Value 定义几十上百个是很常见的事，目前有更简便方法么�
 
 # 使用方法 3 步曲：
 
-1.创建普通 POJO，实现 Serializable 接口
+1.如读写 POJO，需实现 Serializable 接口
 
 ```java
 public class User implements Serializable {
