@@ -1,14 +1,14 @@
-Easy-KeyValue：像 Kotlin “属性代理” 一样简明易用，使 Android Java 项目 key、value、get、put、init 缩减为一，不再 “KV 满天飞”。
+> Easy-KeyValue：像 Kotlin “属性代理” 一样简明易用，使 Android Java 项目 key、value、get、put、init 缩减为一，不再 “KV 满天飞”。
 
 &nbsp;
 
 # 背景
 
-源于朋友圈一段独白：
+源于深夜一段独白：
 
 Key Value 定义几十上百个是很常见的事，目前有更简便方法么，
 
-此为项目中为数不多不受控制之地，指数膨胀，且易埋下一致性问题，
+此为项目中为数不多不受控制之地，指数膨胀，且易埋下一致性隐患，
 
 每新增一 key，需兼顾 value、get、put、init，5 处 …
 
@@ -22,7 +22,13 @@ Key Value 定义几十上百个是很常见的事，目前有更简便方法么�
 
 &nbsp;
 
-# 使用方法 3 步曲：
+```
+implementation 'com.kunminx.arch:key-value:1.2.0-beta'
+```
+
+&nbsp;
+
+# 使用 3 步曲：
 
 1.如读写 POJO，需实现 Serializable 接口
 
@@ -45,7 +51,7 @@ public class Configs {
 }
 ```
 
-3.在页面中通过 get( ) set( ) 接口读写 KeyValue
+3.在页面等处通过 get( ) set( ) 接口读写 KeyValue
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -60,15 +66,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-&nbsp;
-
-Easy-KeyValue 默认使用 SharedPreference 读写，后期可根据 KeyValueTool 自行注入 MMKV 等实现。
-
-目前该库已开源，欢迎诸位试用反馈：
-
-```
-implementation 'com.kunminx.arch:key-value:1.2.0-beta'
-```
+Easy-KeyValue 默认使用 SharedPreference 读写，可根据 KeyValueTool 自行注入 MMKV 等实现（详见 MainActivity 示例）。
 
 &nbsp;
 
@@ -95,6 +93,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
-
-
