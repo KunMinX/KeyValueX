@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
 &nbsp;
 
-Easy-KeyValue 默认使用 SharedPreference 读写，后期可根据 KeyValueTool 自行注入 MMKV 等实现。
+Easy-KeyValue 默认使用 SharedPreference 读写，可根据 KeyValueTool 自行注入 MMKV 等实现（详见 MainActivity 示例）。
 
 目前该库已开源，欢迎诸位试用反馈：
 

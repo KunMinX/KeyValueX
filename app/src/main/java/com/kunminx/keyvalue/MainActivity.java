@@ -6,8 +6,8 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.kunminx.keyvalue.data.Configs;
 import com.kunminx.keyvalue.data.bean.User;
+import com.kunminx.keyvalue.data.config.Configs;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +19,12 @@ public class MainActivity extends AppCompatActivity {
     User u = new User();
     u.title = "title1";
     u.content = "content1";
+
+    //默认 SP 读写。可注入自定义 KV 读写工具，例如 MMKV
+    //MMKV.initialize(this);
+//    MMKVTool mmkvTool=new MMKVTool();
+//    mmkvTool.init(...模块名);
+//    KeyValueConfigs.setKeyValueTools(mmkvTool);
 
     findViewById(R.id.btn_write).setOnClickListener(v -> {
       Configs.user.set(u);

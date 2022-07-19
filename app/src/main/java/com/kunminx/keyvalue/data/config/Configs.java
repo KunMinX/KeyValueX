@@ -1,4 +1,4 @@
-package com.kunminx.keyvalue.data;
+package com.kunminx.keyvalue.data.config;
 
 import com.kunminx.architecture.data.config.keyvalue.KeyValueSerializable;
 import com.kunminx.architecture.data.config.keyvalue.KeyValueString;
