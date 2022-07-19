@@ -15,7 +15,7 @@ public class KeyValueBoolean {
   }
 
   public Boolean get() {
-    if (value == null) value = (Boolean) KeyValueConfigs.getKeyValueTools().get(keyName);
+    if (value == null) value = KeyValueConfigs.getKeyValueTools().getBoolean(keyName);
     return value;
   }
 

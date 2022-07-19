@@ -15,7 +15,7 @@ public class KeyValueFloat {
   }
 
   public Float get() {
-    if (value == null) value = (Float) KeyValueConfigs.getKeyValueTools().get(keyName);
+    if (value == null) value = KeyValueConfigs.getKeyValueTools().getFloat(keyName);
     return value;
   }
 

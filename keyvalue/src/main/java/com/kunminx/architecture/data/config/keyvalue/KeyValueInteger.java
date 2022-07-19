@@ -15,7 +15,7 @@ public class KeyValueInteger {
   }
 
   public Integer get() {
-    if (value == null) value = (Integer) KeyValueConfigs.getKeyValueTools().get(keyName);
+    if (value == null) value = KeyValueConfigs.getKeyValueTools().getInteger(keyName);
     return value;
   }
 

@@ -15,7 +15,7 @@ public class KeyValueLong {
   }
 
   public Long get() {
-    if (value == null) value = (Long) KeyValueConfigs.getKeyValueTools().get(keyName);
+    if (value == null) value = KeyValueConfigs.getKeyValueTools().getLong(keyName);
     return value;
   }
 

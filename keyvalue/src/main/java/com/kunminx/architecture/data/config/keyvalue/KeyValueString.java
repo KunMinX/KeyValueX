@@ -15,7 +15,7 @@ public class KeyValueString {
   }
 
   public String get() {
-    if (value == null) value = (String) KeyValueConfigs.getKeyValueTools().get(keyName);
+    if (value == null) value = KeyValueConfigs.getKeyValueTools().getString(keyName);
     return value;
   }
 

@@ -13,18 +13,18 @@ import java.nio.charset.StandardCharsets;
 /**
  * Create by KunMinX at 2022/7/19
  */
-public class KeyValue<T> {
+public class KeyValueSerializable<T> {
 
   private final String keyName;
   private T value;
 
-  public KeyValue(String keyName) {
+  public KeyValueSerializable(String keyName) {
     this.keyName = keyName;
   }
 
   public T get() {
     if (value == null) {
-      String s = (String) KeyValueConfigs.getKeyValueTools().get(keyName);
+      String s = KeyValueConfigs.getKeyValueTools().getString(keyName);
       value = (T) base64StringToObject(s);
     }
     return value;
