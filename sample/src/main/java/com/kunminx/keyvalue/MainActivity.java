@@ -6,8 +6,8 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.kunminx.keyvalue.data.bean.User;
-import com.kunminx.keyvalue.data.config.Configs;
+import com.kunminx.keyvalue.bean.User;
+import com.kunminx.keyvalue.config.Configs;
 
 public class MainActivity extends AppCompatActivity {
 

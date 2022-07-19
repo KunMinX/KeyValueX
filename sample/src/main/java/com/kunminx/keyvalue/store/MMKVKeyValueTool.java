@@ -1,8 +1,11 @@
-package com.kunminx.keyvalue.data.config.store;
+package com.kunminx.keyvalue.store;
 
 import android.util.Log;
+
 import androidx.annotation.NonNull;
+
 import com.kunminx.architecture.data.config.store.KeyValueTool;
+import com.kunminx.architecture.data.config.utils.AppUtils;
 import com.tencent.mmkv.MMKV;
 import com.tencent.mmkv.MMKVContentChangeNotification;
 import com.tencent.mmkv.MMKVHandler;
@@ -16,7 +19,12 @@ public class MMKVKeyValueTool implements KeyValueTool, MMKVHandler, MMKVContentC
 
   private MMKV mmkv;
 
-  @Override public void init(@NonNull String moduleName) {
+  @Override
+  public void init(@NonNull String moduleName) {
+    String dir = AppUtils.getApp().getFilesDir().getAbsolutePath() + "/mmkv";
+    String rootDir = MMKV.initialize(AppUtils.getApp(), dir, MMKVLogLevel.LevelInfo);
+    Log.i("MMKV", "mmkv root: " + rootDir);
+
     // set log level
     MMKV.setLogLevel(MMKVLogLevel.LevelInfo);
 
@@ -82,19 +90,23 @@ public class MMKVKeyValueTool implements KeyValueTool, MMKVHandler, MMKVContentC
     return mmkv.getString(keyName, "");
   }
 
-  @Override public void onContentChangedByOuterProcess(String mmapID) {
+  @Override
+  public void onContentChangedByOuterProcess(String mmapID) {
     Log.i("MMKV", "other process has changed content of : " + mmapID);
   }
 
-  @Override public MMKVRecoverStrategic onMMKVCRCCheckFail(String mmapID) {
+  @Override
+  public MMKVRecoverStrategic onMMKVCRCCheckFail(String mmapID) {
     return MMKVRecoverStrategic.OnErrorRecover;
   }
 
-  @Override public MMKVRecoverStrategic onMMKVFileLengthError(String mmapID) {
+  @Override
+  public MMKVRecoverStrategic onMMKVFileLengthError(String mmapID) {
     return MMKVRecoverStrategic.OnErrorRecover;
   }
 
-  @Override public boolean wantLogRedirecting() {
+  @Override
+  public boolean wantLogRedirecting() {
     return true;
   }
 

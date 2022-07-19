@@ -1,6 +1,7 @@
 package com.kunminx.architecture.data.config.keyvalue;
 
 import android.util.Base64;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -48,6 +49,7 @@ public class KeyValueSerializable<T> {
       bos.close();
       s = Base64.encodeToString(bos.toByteArray(), Base64.DEFAULT);
     } catch (Exception e) {
+      Log.e("--- keyValue - objectToBase64String -- ", e.toString());
     }
     return s;
   }
@@ -62,6 +64,7 @@ public class KeyValueSerializable<T> {
       bis.close();
       ois.close();
     } catch (Exception e) {
+      Log.e("--- keyValue - base64StringToObject -- ", e.toString());
     }
     return o;
   }

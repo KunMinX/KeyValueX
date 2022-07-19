@@ -1,22 +1,16 @@
 package com.kunminx.keyvalue;
 
 import android.app.Application;
-import android.util.Log;
 
 import com.kunminx.architecture.data.config.KeyValueConfigs;
-import com.kunminx.keyvalue.data.config.store.MMKVKeyValueTool;
+import com.kunminx.keyvalue.store.MMKVKeyValueTool;
 import com.tencent.mmkv.MMKV;
-import com.tencent.mmkv.MMKVLogLevel;
 
 public class App extends Application {
 
   @Override
   public void onCreate() {
     super.onCreate();
-
-    String dir = getFilesDir().getAbsolutePath() + "/mmkv";
-    String rootDir = MMKV.initialize(this, dir, MMKVLogLevel.LevelInfo);
-    Log.i("MMKV", "mmkv root: " + rootDir);
 
     MMKVKeyValueTool mmkvTool = new MMKVKeyValueTool();
 

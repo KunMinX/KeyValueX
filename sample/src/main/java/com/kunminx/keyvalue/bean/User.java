@@ -1,4 +1,4 @@
-package com.kunminx.keyvalue.data.bean;
+package com.kunminx.keyvalue.bean;
 
 import java.io.Serializable;
 

@@ -76,8 +76,8 @@ public class Configs {
 public class MainActivity extends AppCompatActivity {
   ...
 
-          //测试持久化写入
-          Configs.user.set(u);
+  //测试持久化写入
+  Configs.user.set(u);
 
   //测试读取
   Log.d("---title", Configs.user.get().title);
