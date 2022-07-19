@@ -1,26 +1,31 @@
 package com.kunminx.architecture.data.config.store;
 
+import androidx.annotation.NonNull;
+
 /**
  * Create by KunMinX at 2022/7/19
  */
 public interface KeyValueTool {
-  void put(String keyName, Integer i);
 
-  void put(String keyName, Long l);
+  void init(@NonNull String moduleName);
 
-  void put(String keyName, Float f);
+  void put(@NonNull String keyName, Integer i);
 
-  void put(String keyName, Boolean b);
+  void put(@NonNull String keyName, Long l);
 
-  void put(String keyName, String s);
+  void put(@NonNull String keyName, Float f);
 
-  Integer getInteger(String keyName);
+  void put(@NonNull String keyName, Boolean b);
 
-  Long getLong(String keyName);
+  void put(@NonNull String keyName, String s);
 
-  Float getFloat(String keyName);
+  Integer getInteger(@NonNull String keyName);
 
-  Boolean getBoolean(String keyName);
+  Long getLong(@NonNull String keyName);
 
-  String getString(String keyName);
+  Float getFloat(@NonNull String keyName);
+
+  Boolean getBoolean(@NonNull String keyName);
+
+  String getString(@NonNull String keyName);
 }

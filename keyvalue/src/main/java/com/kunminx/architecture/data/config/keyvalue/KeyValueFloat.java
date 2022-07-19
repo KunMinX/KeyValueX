@@ -1,5 +1,7 @@
 package com.kunminx.architecture.data.config.keyvalue;
 
+import androidx.annotation.NonNull;
+
 import com.kunminx.architecture.data.config.KeyValueConfigs;
 
 /**
@@ -10,7 +12,7 @@ public class KeyValueFloat {
   private final String keyName;
   private Float value;
 
-  public KeyValueFloat(String keyName) {
+  public KeyValueFloat(@NonNull String keyName) {
     this.keyName = keyName;
   }
 
@@ -19,7 +21,7 @@ public class KeyValueFloat {
     return value;
   }
 
-  public void set(Float value) {
+  public void set(@NonNull Float value) {
     this.value = value;
     KeyValueConfigs.getKeyValueTools().put(keyName, value);
   }

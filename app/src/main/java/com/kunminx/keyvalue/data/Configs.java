@@ -1,8 +1,8 @@
-package com.kunminx.purenote.data;
+package com.kunminx.keyvalue.data;
 
 import com.kunminx.architecture.data.config.keyvalue.KeyValueSerializable;
 import com.kunminx.architecture.data.config.keyvalue.KeyValueString;
-import com.kunminx.purenote.data.bean.User;
+import com.kunminx.keyvalue.data.bean.User;
 
 /**
  * Create by KunMinX at 2022/7/19

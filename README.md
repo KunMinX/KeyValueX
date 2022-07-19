@@ -49,27 +49,14 @@ public class Configs {
 
 ```java
 public class MainActivity extends AppCompatActivity {
+  ...
+          
+  //测试持久化写入
+  Configs.user.set(u);
 
-  @Override
-  protected void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
-
-    User u = new User();
-    u.title = "title1";
-    u.content = "content1";
-
-    findViewById(R.id.btn_write).setOnClickListener(v -> {
-      //测试持久化写入
-      Configs.user.set(u);
-    });
-
-    findViewById(R.id.btn_read).setOnClickListener(v -> {
-      //测试读取
-      Log.d("---title", Configs.user.get().title);
-      Log.d("---content", Configs.user.get().content);
-    });
-  }
+  //测试读取
+  Log.d("---title", Configs.user.get().title);
+  Log.d("---content", Configs.user.get().content);
 }
 ```
 
@@ -80,7 +67,7 @@ Easy-KeyValue 默认使用 SharedPreference 读写，后期可根据 KeyValueToo
 目前该库已开源，欢迎诸位试用反馈：
 
 ```
-implementation 'com.kunminx.arch:key-value:1.0.0-beta'
+implementation 'com.kunminx.arch:key-value:1.1.0-beta'
 ```
 
 &nbsp;

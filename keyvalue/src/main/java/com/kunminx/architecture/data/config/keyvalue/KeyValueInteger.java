@@ -1,5 +1,7 @@
 package com.kunminx.architecture.data.config.keyvalue;
 
+import androidx.annotation.NonNull;
+
 import com.kunminx.architecture.data.config.KeyValueConfigs;
 
 /**
@@ -10,7 +12,7 @@ public class KeyValueInteger {
   private final String keyName;
   private Integer value;
 
-  public KeyValueInteger(String keyName) {
+  public KeyValueInteger(@NonNull String keyName) {
     this.keyName = keyName;
   }
 
@@ -19,7 +21,7 @@ public class KeyValueInteger {
     return value;
   }
 
-  public void set(Integer value) {
+  public void set(@NonNull Integer value) {
     this.value = value;
     KeyValueConfigs.getKeyValueTools().put(keyName, value);
   }

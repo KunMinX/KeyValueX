@@ -1,5 +1,7 @@
 package com.kunminx.architecture.data.config.store;
 
+import androidx.annotation.NonNull;
+
 import com.kunminx.architecture.data.config.utils.SPUtils;
 
 /**
@@ -7,53 +9,59 @@ import com.kunminx.architecture.data.config.utils.SPUtils;
  */
 public class DefaultKeyValueTool implements KeyValueTool {
 
-  @Override
-  public void put(String keyName, Integer i) {
-    SPUtils.getInstance().put(keyName, i);
+  private SPUtils mSPUtils;
+
+  public void init(@NonNull String moduleName) {
+    mSPUtils = SPUtils.getInstance(moduleName);
   }
 
   @Override
-  public void put(String keyName, Long l) {
-    SPUtils.getInstance().put(keyName, l);
+  public void put(@NonNull String keyName, Integer i) {
+    mSPUtils.put(keyName, i);
   }
 
   @Override
-  public void put(String keyName, Float f) {
-    SPUtils.getInstance().put(keyName, f);
+  public void put(@NonNull String keyName, Long l) {
+    mSPUtils.put(keyName, l);
   }
 
   @Override
-  public void put(String keyName, Boolean b) {
-    SPUtils.getInstance().put(keyName, b);
+  public void put(@NonNull String keyName, Float f) {
+    mSPUtils.put(keyName, f);
   }
 
   @Override
-  public void put(String keyName, String s) {
-    SPUtils.getInstance().put(keyName, s);
+  public void put(@NonNull String keyName, Boolean b) {
+    mSPUtils.put(keyName, b);
   }
 
   @Override
-  public Integer getInteger(String keyName) {
-    return SPUtils.getInstance().getInt(keyName);
+  public void put(@NonNull String keyName, String s) {
+    mSPUtils.put(keyName, s);
   }
 
   @Override
-  public Long getLong(String keyName) {
-    return SPUtils.getInstance().getLong(keyName);
+  public Integer getInteger(@NonNull String keyName) {
+    return mSPUtils.getInt(keyName);
   }
 
   @Override
-  public Float getFloat(String keyName) {
-    return SPUtils.getInstance().getFloat(keyName);
+  public Long getLong(@NonNull String keyName) {
+    return mSPUtils.getLong(keyName);
   }
 
   @Override
-  public Boolean getBoolean(String keyName) {
-    return SPUtils.getInstance().getBoolean(keyName);
+  public Float getFloat(@NonNull String keyName) {
+    return mSPUtils.getFloat(keyName);
   }
 
   @Override
-  public String getString(String keyName) {
-    return SPUtils.getInstance().getString(keyName);
+  public Boolean getBoolean(@NonNull String keyName) {
+    return mSPUtils.getBoolean(keyName);
+  }
+
+  @Override
+  public String getString(@NonNull String keyName) {
+    return mSPUtils.getString(keyName);
   }
 }

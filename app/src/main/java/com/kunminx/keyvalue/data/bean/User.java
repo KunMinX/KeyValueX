@@ -1,4 +1,4 @@
-package com.kunminx.purenote.data.bean;
+package com.kunminx.keyvalue.data.bean;
 
 import java.io.Serializable;
 

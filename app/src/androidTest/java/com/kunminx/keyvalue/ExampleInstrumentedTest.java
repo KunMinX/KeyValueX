@@ -1,4 +1,4 @@
-package com.kunminx.purenote;
+package com.kunminx.keyvalue;
 
 import android.content.Context;
 

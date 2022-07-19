@@ -2,6 +2,8 @@ package com.kunminx.architecture.data.config.keyvalue;
 
 import android.util.Base64;
 
+import androidx.annotation.NonNull;
+
 import com.kunminx.architecture.data.config.KeyValueConfigs;
 
 import java.io.ByteArrayInputStream;
@@ -18,7 +20,7 @@ public class KeyValueSerializable<T> {
   private final String keyName;
   private T value;
 
-  public KeyValueSerializable(String keyName) {
+  public KeyValueSerializable(@NonNull String keyName) {
     this.keyName = keyName;
   }
 
@@ -30,7 +32,7 @@ public class KeyValueSerializable<T> {
     return value;
   }
 
-  public void set(T value) {
+  public void set(@NonNull T value) {
     this.value = value;
     String s = objectToBase64String(value);
     KeyValueConfigs.getKeyValueTools().put(keyName, s);

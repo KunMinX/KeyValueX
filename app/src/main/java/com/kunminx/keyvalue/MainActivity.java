@@ -1,4 +1,4 @@
-package com.kunminx.purenote;
+package com.kunminx.keyvalue;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -6,8 +6,8 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.kunminx.purenote.data.Configs;
-import com.kunminx.purenote.data.bean.User;
+import com.kunminx.keyvalue.data.Configs;
+import com.kunminx.keyvalue.data.bean.User;
 
 public class MainActivity extends AppCompatActivity {
 

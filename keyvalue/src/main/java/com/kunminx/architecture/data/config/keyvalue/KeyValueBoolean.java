@@ -1,5 +1,7 @@
 package com.kunminx.architecture.data.config.keyvalue;
 
+import androidx.annotation.NonNull;
+
 import com.kunminx.architecture.data.config.KeyValueConfigs;
 
 /**
@@ -10,7 +12,7 @@ public class KeyValueBoolean {
   private final String keyName;
   private Boolean value;
 
-  public KeyValueBoolean(String keyName) {
+  public KeyValueBoolean(@NonNull String keyName) {
     this.keyName = keyName;
   }
 
@@ -19,7 +21,7 @@ public class KeyValueBoolean {
     return value;
   }
 
-  public void set(Boolean value) {
+  public void set(@NonNull Boolean value) {
     this.value = value;
     KeyValueConfigs.getKeyValueTools().put(keyName, value);
   }
