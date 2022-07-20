@@ -63,11 +63,6 @@ public class KeyValueProcessor extends AbstractProcessor {
 //    }
 
 //    public class KeyValues {
-//      public KeyValues(){
-//        KeyValueTool tool = new KeyValueTool();
-//        tool.init("sample");
-//        KeyValueConfig.setKeyValueTools(tool);
-//      }
 //      public final KeyValueString username = new keyValueString("username");
 //      public final KeyValueSerializable<User> user = new KeyValueSerializable<>("user);
 //    }
