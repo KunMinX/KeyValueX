@@ -27,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
     });
 
     findViewById(R.id.btn_read).setOnClickListener(v -> {
-      Log.d("---title", Configs.user.get().title);
-      Log.d("---content", Configs.user.get().content);
+//      Log.d("---title", Configs.user.get().title);
+//      Log.d("---content", Configs.user.get().content);
+      Log.d("---title", Configs.test.user().get().title);
     });
   }
 }

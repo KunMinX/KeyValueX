@@ -14,5 +14,5 @@ dependencies {
     implementation "com.google.auto.service:auto-service:1.0-rc6"
     annotationProcessor "com.google.auto.service:auto-service:1.0-rc6"
     implementation 'com.squareup:javapoet:1.13.0'
-    implementation 'com.github.KunMinX:KeyValueX-compiler:2.0.0-beta'
+//    implementation 'com.github.KunMinX:KeyValueX-compiler:2.0.0-beta'
 }

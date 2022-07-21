@@ -369,7 +369,7 @@ public final class SPUtils {
    * or {@code Collections.<String>emptySet()} otherwise
    */
   public Set<String> getStringSet(@NonNull final String key) {
-    return getStringSet(key, Collections.emptySet());
+    return getStringSet(key, Collections.<String>emptySet());
   }
 
   /**
