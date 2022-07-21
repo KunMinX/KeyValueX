@@ -1,11 +1,11 @@
-package com.kunminx.aptprocesser;
+package com.kunminx.keyvalue.apt;
 
 import com.google.auto.service.AutoService;
-import com.kunminx.aptannotation.KeyValue;
-import com.kunminx.aptannotation.KeyValueGroup;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
+import com.squareup.javapoet.MethodSpec;
+import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 
 import java.io.IOException;
@@ -15,18 +15,16 @@ import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
-import javax.annotation.processing.Messager;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
+import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
-import javax.lang.model.element.VariableElement;
 import javax.lang.model.util.Elements;
-import javax.lang.model.util.Types;
 
 /**
  * Create by KunMinX at 2022/7/20
@@ -35,16 +33,12 @@ import javax.lang.model.util.Types;
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class KeyValueProcessor extends AbstractProcessor {
   private Filer mFiler;
-  private Types mTypeUtils;
   private Elements mElementUtils;
-  private Messager mMessenger;
 
   @Override
   public synchronized void init(ProcessingEnvironment pEnv) {
     super.init(pEnv);
-    mTypeUtils = pEnv.getTypeUtils();
     mElementUtils = pEnv.getElementUtils();
-    mMessenger = pEnv.getMessager();
     mFiler = pEnv.getFiler();
   }
 
@@ -53,19 +47,6 @@ public class KeyValueProcessor extends AbstractProcessor {
     if (types == null || types.isEmpty()) {
       return false;
     }
-
-//    @KeyValueGroup(name = "sample")
-//    public class KeyValues {
-//      @KeyValue
-//      KeyValueString username;
-//      @KeyValue
-//      KeyValueSerializable<User> user;
-//    }
-
-//    public class KeyValues {
-//      public final KeyValueString username = new keyValueString("username");
-//      public final KeyValueSerializable<User> user = new KeyValueSerializable<>("user);
-//    }
 
     Set<? extends Element> rootElements = rEnv.getElementsAnnotatedWith(KeyValueGroup.class);
 
@@ -77,22 +58,30 @@ public class KeyValueProcessor extends AbstractProcessor {
 
         List<? extends Element> members = mElementUtils.getAllMembers(typeElement);
         for (Element childElement : members) {
-          if (childElement instanceof VariableElement) {
-            VariableElement variableElement = (VariableElement) childElement;
-            KeyValue keyValue = variableElement.getAnnotation(KeyValue.class);
+          if (childElement instanceof ExecutableElement) {
+            ExecutableElement executableElement = (ExecutableElement) childElement;
+            KeyValue keyValue = executableElement.getAnnotation(KeyValue.class);
             if (keyValue == null) continue;
-            FieldSpec fb = FieldSpec.builder(ClassName.get(variableElement.asType()), variableElement.getSimpleName().toString())
-                    .addModifiers(Modifier.PUBLIC)
-                    .addModifiers(Modifier.FINAL)
-                    .addModifiers(Modifier.STATIC)
-                    .initializer("new $T($S)", ClassName.get(variableElement.asType()), variableElement.getSimpleName().toString())
+            String varName = executableElement.getSimpleName().toString();
+            String backVarName = "_" + varName;
+            TypeName typeName = ClassName.get(executableElement.getReturnType());
+            FieldSpec fb = FieldSpec.builder(typeName, backVarName)
+                    .addModifiers(Modifier.PRIVATE)
                     .build();
             classBuilder.addField(fb);
+            MethodSpec mb = MethodSpec.methodBuilder(varName)
+                    .addModifiers(Modifier.PUBLIC)
+                    .returns(typeName)
+                    .addStatement("if($L == null) $L = new $T($S);", backVarName, backVarName, typeName, varName)
+                    .addStatement("return $L", backVarName)
+                    .build();
+            classBuilder.addMethod(mb);
           }
         }
+        classBuilder.addSuperinterface(typeElement.asType());
         TypeSpec typeSpec = classBuilder.build();
 
-        JavaFile javaFile = JavaFile.builder(typeElement.getQualifiedName().toString() + "Impl", typeSpec)
+        JavaFile javaFile = JavaFile.builder(typeElement.getEnclosingElement().toString(), typeSpec)
                 .build();
         try {
           javaFile.writeTo(mFiler);

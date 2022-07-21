@@ -15,5 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "KeyValueX"
 include ':sample'
 include ':keyvalue'
-include ':apt-processor'
-include ':apt-annotation'
+include ':apt'

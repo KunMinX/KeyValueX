@@ -1,4 +1,4 @@
-package com.kunminx.aptannotation;
+package com.kunminx.keyvalue.apt;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
  * Create by KunMinX at 2022/7/20
  */
 @Retention(RetentionPolicy.SOURCE)
-@Target(ElementType.FIELD)
-public @interface KeyValue {
+@Target(ElementType.TYPE)
+public @interface KeyValueGroup {
 }
