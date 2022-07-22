@@ -1,12 +1,10 @@
-plugins {
-    id 'com.android.application'
-}
+apply plugin: 'com.android.application'
 
 android {
-    compileSdk appTargetSdk
+    compileSdkVersion appTargetSdk
     defaultConfig {
-        minSdk appMinSdk
-        targetSdk appTargetSdk
+        minSdkVersion appMinSdk
+        targetSdkVersion appTargetSdk
         versionCode appVersionCode
         versionName appVersionName
         applicationId "com.kunminx.keyvalue"
