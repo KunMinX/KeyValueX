@@ -1,4 +1,4 @@
-package com.kunminx.keyvalue.apt;
+package com.kunminx.keyvalue.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

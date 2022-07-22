@@ -42,8 +42,10 @@ dependencies {
     implementation "com.google.android.material:material:1.6.1"
 
     implementation 'com.tencent:mmkv:1.2.13'
-    implementation project(':keyvalue-compiler')
+//    implementation project(':keyvalue-compiler')
     annotationProcessor project(':keyvalue-compiler')
 
-
+//    implementation 'com.github.KunMinX.KeyValueX:keyvalue:v2.2.0-beta'
+//    implementation 'com.github.KunMinX.KeyValueX:keyvalue-compiler:v2.2.0-beta'
+//    annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:v2.2.0-beta'
 }

@@ -1,10 +1,10 @@
 package com.kunminx.keyvalue.config;
 
-import com.kunminx.keyvalue.apt.KeyValue;
-import com.kunminx.keyvalue.apt.KeyValueGroup;
 import com.kunminx.architecture.data.config.keyvalue.KeyValueBoolean;
 import com.kunminx.architecture.data.config.keyvalue.KeyValueSerializable;
 import com.kunminx.architecture.data.config.keyvalue.KeyValueString;
+import com.kunminx.keyvalue.annotation.KeyValue;
+import com.kunminx.keyvalue.annotation.KeyValueGroup;
 import com.kunminx.keyvalue.bean.User;
 
 /**

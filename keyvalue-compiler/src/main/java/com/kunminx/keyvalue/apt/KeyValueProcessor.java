@@ -1,6 +1,8 @@
 package com.kunminx.keyvalue.apt;
 
 import com.google.auto.service.AutoService;
+import com.kunminx.keyvalue.annotation.KeyValue;
+import com.kunminx.keyvalue.annotation.KeyValueGroup;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;

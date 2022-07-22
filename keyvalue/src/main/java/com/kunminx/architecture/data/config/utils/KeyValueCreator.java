@@ -1,4 +1,4 @@
-package com.kunminx.keyvalue.apt;
+package com.kunminx.architecture.data.config.utils;
 
 /**
  * Create by KunMinX at 2022/7/21

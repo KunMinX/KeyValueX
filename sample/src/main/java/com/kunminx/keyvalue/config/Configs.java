@@ -4,7 +4,7 @@ import com.kunminx.architecture.data.config.keyvalue.KeyValueBoolean;
 import com.kunminx.architecture.data.config.keyvalue.KeyValueInteger;
 import com.kunminx.architecture.data.config.keyvalue.KeyValueSerializable;
 import com.kunminx.architecture.data.config.keyvalue.KeyValueString;
-import com.kunminx.keyvalue.apt.KeyValueCreator;
+import com.kunminx.architecture.data.config.utils.KeyValueCreator;
 import com.kunminx.keyvalue.bean.User;
 
 /**

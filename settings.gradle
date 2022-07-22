@@ -2,3 +2,4 @@ rootProject.name = "KeyValueX"
 include ':sample'
 include ':keyvalue'
 include ':keyvalue-compiler'
+include ':keyvalue-annotation'
