@@ -1,4 +1,4 @@
 rootProject.name = "KeyValueX"
 include ':sample'
 include ':keyvalue'
-include ':apt'
+include ':keyvalue-compiler'
