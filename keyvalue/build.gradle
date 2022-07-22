@@ -54,5 +54,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation "androidx.annotation:annotation:1.4.0"
-    api project(":keyvalue-annotation")
+    api 'com.github.KunMinX.KeyValueX:keyvalue-annotation:2.2.3-beta'
 }
