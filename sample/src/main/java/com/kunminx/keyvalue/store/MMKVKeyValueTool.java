@@ -1,3 +1,4 @@
+/*
 package com.kunminx.keyvalue.store;
 
 import android.util.Log;
@@ -12,9 +13,12 @@ import com.tencent.mmkv.MMKVHandler;
 import com.tencent.mmkv.MMKVLogLevel;
 import com.tencent.mmkv.MMKVRecoverStrategic;
 
-/**
+*/
+/*  如需使用 MMKV，您需额外配置 NDK
+ *
  * Create by syxc at 2022/7/19
- */
+ *//*
+
 public class MMKVKeyValueTool implements KeyValueTool, MMKVHandler, MMKVContentChangeNotification {
 
   private MMKV mmkv;
@@ -129,4 +133,4 @@ public class MMKVKeyValueTool implements KeyValueTool, MMKVHandler, MMKVContentC
         break;
     }
   }
-}
+}*/
