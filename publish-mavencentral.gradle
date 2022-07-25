@@ -91,9 +91,9 @@ publishing {
                         dependencyNode.appendNode('artifactId', dep.name)
 
                         if (dep.version == 'unspecified') {
-                            dependencyNode.appendNode('groupId', project.ext.pomGroupID)
-                            dependencyNode.appendNode('version', project.ext.pomVersion)
-                            System.println("${project.ext.pomGroupID} ${dep.name} ${project.ext.pomVersion}")
+                            dependencyNode.appendNode('groupId', project.ext.PUBLISH_GROUP_ID)
+                            dependencyNode.appendNode('version', project.ext.PUBLISH_VERSION)
+                            System.println("${project.ext.PUBLISH_GROUP_ID} ${dep.name} ${project.ext.PUBLISH_VERSION}")
                         } else {
                             dependencyNode.appendNode('groupId', dep.group)
                             dependencyNode.appendNode('version', dep.version)
