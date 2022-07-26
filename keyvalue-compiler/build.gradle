@@ -7,6 +7,33 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
+ext {
+    PUBLISH_GROUP_ID = 'com.kunminx.arch'
+    PUBLISH_ARTIFACT_ID = 'key-value-compiler'
+    PUBLISH_VERSION = appVersionName
+    VERSION_CODE = appVersionCode
+
+    ARTIFACT_DESCRIPTION = 'Eliminate the KeyValue boilerplate code of the Android project, reduce key, value, get, put, init to one, no longer KV explosion.'
+
+    POM_URL='https://github.com/KunMinX/KeyValueX'
+    POM_SCM_URL='https://github.com/KunMinX/KeyValueX/tree/master'
+    POM_SCM_CONNECTION='scm:git:github.com/KunMinX/KeyValueX.git'
+    POM_SCM_DEV_CONNECTION='scm:git:ssh://github.com/KunMinX/KeyValueX.git'
+
+    POM_DEVELOPER_ID='KunMinX'
+    POM_DEVELOPER_NAME='KunMinX'
+    POM_DEVELOPER_URL='https://github.com/KunMinX'
+    POM_DEVELOPER_EMAIL='kunminx@gmail.com'
+
+    LICENSE_NAME='The Apache Software License, Version 2.0'
+    LICENSE_URL='http://www.apache.org/licenses/LICENSE-2.0.txt'
+
+    uploadJavadocs = false
+    uploadSources = false
+}
+
+apply from: "${rootProject.projectDir}/publish-mavencentral.gradle"
+
 dependencies {
     implementation "com.google.auto.service:auto-service:1.0-rc6"
     annotationProcessor "com.google.auto.service:auto-service:1.0-rc6"

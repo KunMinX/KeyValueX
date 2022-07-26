@@ -1,24 +1,22 @@
-![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4k72tzualj21h80dgwft.jpg)
+![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4k7mxxpjzj21h60dkwfu.jpg)
 
 &nbsp;
 
-### [🌏 English README](https://github.com/KunMinX/KeyValueX/blob/main/README_EN.md)
-
-研发小故事：[《KeyValueX 立项 & 迭代心路历程》](https://juejin.cn/post/7121955840319291428)
+Software development stories:[《KeyValueX Project Approval & Iteration Process》](https://juejin.cn/post/7121955840319291428)
 
 &nbsp;
 
-# 特性
+# Feature
 
-1.key、value、get、put、init 缩减为一，不再 KV 爆炸
+1. Key, value, get, put, init are reduced to one, no longer KV explosion
 
-2.使用注解，但无需初始化 build，对巨型项目友好
+2. Use annotations, but no need to initialize build, friendly to huge projects
 
-3.支持 Java
+3. Support Java
 
 &nbsp;
 
-项目根目录 build.gradle 添加如下依赖：
+Add the following dependencies to the project root directory build.gradle:
 
 ```
 allprojects {
@@ -29,7 +27,7 @@ allprojects {
 }
 ```
 
-模块 build.gradle 添加如下依赖：
+The module build.gradle adds the following dependencies:
 
 ```
 implementation 'com.github.KunMinX.KeyValueX:keyvalue:2.2.4-beta'
@@ -38,9 +36,9 @@ annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:2.2.4-beta'
 
 &nbsp;
 
-# 使用 3 步曲
+# Usage
 
-1.创建 KeyValueGroup 接口
+Step 1. Create the KeyValueGroup interface
 
 ```java
 @KeyValueGroup
@@ -50,33 +48,32 @@ public interface KeyValues {
 }
 ```
 
-2.像往常一样，创建项目配置管理类，如 Configs
+Step 2. As usual, create a project configuration management class like Configs
 
 ```java
-//Configs 无须定义一堆 KEY、VALUE 常量和 get、put、init 静态方法，
-//只需一条 KeyValues 静态变量：
+//Configs do not need to define a bunch of KEY, VALUE constants and get, put, init static methods, Just one KeyValues static variable:
 
 public class Configs {
   public final static KeyValues keyValues = KeyValueCreator.create(KeyValues.class);
 }
 ```
 
-3.在页面等处通过 get( ) set( ) 方法读写 KeyValue
+Step 3. Read and write KeyValue through the get( ) set( ) method on the page, etc.
 
 ```java
 public class MainActivity extends AppCompatActivity {
   ...
           
-  //测试持久化写入
+  //Test persistent write
   Configs.keyValues.user().set(u);
 
-  //测试读取
+  //Test read
   Log.d("---title", Configs.keyValues.user().get().title);
   Log.d("---content", Configs.keyValues.user().get().content);
 }
 ```
 
-KeyValueX 默认使用 SharedPreference 读写，可根据 KeyValueTool 自行注入 MMKV 等实现（详见 MainActivity 示例）。
+KeyValueX uses SharedPreference to read and write by default, and can be injected into MMKV and other implementations according to KeyValueTool (see the MainActivity example for details).
 
 &nbsp;
 
