@@ -1,4 +1,4 @@
-![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4k72tzualj21h80dgwft.jpg)
+![](https://tva1.sinaimg.cn/large/e6c9d24ely1h4kltojgmqj21h80dmabg.jpg)
 
 &nbsp;
 
@@ -40,12 +40,13 @@ annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:2.2.4-beta'
 
 # 使用 3 步曲
 
-1.创建 KeyValueGroup 接口
+1.创建 KeyValueGroup 接口，例如
 
 ```java
 @KeyValueGroup
-public interface KeyValues {
-  @KeyValue KeyValueString username();
+public interface Test {
+  @KeyValue KeyValueInteger days();
+  @KeyValue KeyValueString accountId();
   @KeyValue KeyValueSerializable<User> user();
 }
 ```
@@ -57,7 +58,7 @@ public interface KeyValues {
 //只需一条 KeyValues 静态变量：
 
 public class Configs {
-  public final static KeyValues keyValues = KeyValueCreator.create(KeyValues.class);
+  public final static Test keyValues = KeyValueCreator.create(Test.class);
 }
 ```
 
@@ -66,7 +67,7 @@ public class Configs {
 ```java
 public class MainActivity extends AppCompatActivity {
   ...
-          
+
   //测试持久化写入
   Configs.keyValues.user().set(u);
 

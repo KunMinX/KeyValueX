@@ -38,12 +38,13 @@ annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:2.2.4-beta'
 
 # Usage
 
-Step 1. Create the KeyValueGroup interface
+Step 1. Create the KeyValueGroup interface, for example
 
 ```java
 @KeyValueGroup
-public interface KeyValues {
-  @KeyValue KeyValueString username();
+public interface Test {
+  @KeyValue KeyValueInteger days();
+  @KeyValue KeyValueString accountId();
   @KeyValue KeyValueSerializable<User> user();
 }
 ```
@@ -54,7 +55,7 @@ Step 2. As usual, create a project configuration management class like Configs
 //Configs do not need to define a bunch of KEY, VALUE constants and get, put, init static methods, Just one KeyValues static variable:
 
 public class Configs {
-  public final static KeyValues keyValues = KeyValueCreator.create(KeyValues.class);
+  public final static Test keyValues = KeyValueCreator.create(Test.class);
 }
 ```
 
@@ -63,7 +64,7 @@ Step 3. Read and write KeyValue through the get( ) set( ) method on the page, et
 ```java
 public class MainActivity extends AppCompatActivity {
   ...
-          
+
   //Test persistent write
   Configs.keyValues.user().set(u);
 
