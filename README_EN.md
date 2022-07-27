@@ -2,7 +2,7 @@
 
 &nbsp;
 
-Software development stories:[《KeyValueX Project Approval & Iteration Process》](https://juejin.cn/post/7121955840319291428)
+Software development stories:[《KeyValueX Project Approval & Iteration Process》](https://blog.devgenius.io/keyvaluex-eliminate-boilerplate-code-and-make-android-projects-no-longer-kv-explosion-3f6fbca31692)
 
 &nbsp;
 
