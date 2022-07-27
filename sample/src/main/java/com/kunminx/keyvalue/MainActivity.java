@@ -2,12 +2,12 @@ package com.kunminx.keyvalue;
 
 import android.os.Bundle;
 import android.util.Log;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.kunminx.keyvalue.bean.User;
 import com.kunminx.keyvalue.config.Configs;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,16 +20,26 @@ public class MainActivity extends AppCompatActivity {
     u.title = "title1";
     u.content = "content1";
 
+    List<User> users = new ArrayList<>();
+    users.add(u);
+
     //默认 SP 读写。可注入自定义 KV 读写工具，例如 MMKV 详见 App.java
 
     findViewById(R.id.btn_write).setOnClickListener(v -> {
       Configs.user.set(u);
+      if (Configs.test != null) {
+        Configs.test.users().set(users);
+      }
     });
 
     findViewById(R.id.btn_read).setOnClickListener(v -> {
 //      Log.d("---title", Configs.user.get().title);
 //      Log.d("---content", Configs.user.get().content);
-      Log.d("---title", Configs.test.user().get().title);
+      if (Configs.test != null) {
+        Log.d("---title", Configs.test.user().get().title);
+        Log.d("---users", Configs.test.users().get().toString());
+        Log.d("---content", Configs.test.users().get().get(0).content);
+      }
     });
   }
 }
