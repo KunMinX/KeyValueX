@@ -15,6 +15,10 @@ public class Configs {
   public final static KeyValueBoolean isVip = new KeyValueBoolean("isVip");
   public final static KeyValueString accountId = new KeyValueString("accountId");
   public final static KeyValueSerializable<User> user = new KeyValueSerializable<>("user");
+
   //  public final static Test test = new TestImpl();
+
+  // TODO tip：可通过 KeyValueCreator 获取 TestImpl 实例，如此写代码时无需初始化 build，对巨型项目友好
+
   public final static Test test = KeyValueCreator.create(Test.class);
 }

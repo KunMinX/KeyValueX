@@ -36,11 +36,9 @@ public class MainActivity extends AppCompatActivity {
     findViewById(R.id.btn_read).setOnClickListener(v -> {
 //      Log.d("---title", Configs.user.get().title);
 //      Log.d("---content", Configs.user.get().content);
-      if (Configs.test != null) {
-        Log.d("---title", Configs.test.user().get().title);
-        Log.d("---users", Configs.test.users().get().toString());
-        Log.d("---content", Configs.test.users().get().get(0).content);
-      }
+      Log.d("---title", Configs.test.user().get().title);
+      Log.d("---users", Configs.test.users().get().toString());
+      Log.d("---content", Configs.test.users().get().get(0).content);
     });
   }
 }

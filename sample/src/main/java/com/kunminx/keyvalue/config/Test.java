@@ -6,6 +6,7 @@ import com.kunminx.architecture.data.config.keyvalue.KeyValueString;
 import com.kunminx.keyvalue.annotation.KeyValue;
 import com.kunminx.keyvalue.annotation.KeyValueGroup;
 import com.kunminx.keyvalue.bean.User;
+
 import java.util.List;
 
 /**
