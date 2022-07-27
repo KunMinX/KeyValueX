@@ -2,10 +2,13 @@ package com.kunminx.keyvalue;
 
 import android.os.Bundle;
 import android.util.Log;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.kunminx.keyvalue.bean.User;
 import com.kunminx.keyvalue.config.Configs;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,9 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     findViewById(R.id.btn_write).setOnClickListener(v -> {
       Configs.user.set(u);
-      if (Configs.test != null) {
-        Configs.test.users().set(users);
-      }
+      Configs.test.users().set(users);
     });
 
     findViewById(R.id.btn_read).setOnClickListener(v -> {
