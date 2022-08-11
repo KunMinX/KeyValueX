@@ -2,7 +2,6 @@ package com.kunminx.architecture.data.config;
 
 import com.kunminx.architecture.data.config.store.DefaultKeyValueTool;
 import com.kunminx.architecture.data.config.store.KeyValueTool;
-import com.kunminx.architecture.BuildConfig;
 
 /**
  * Create by KunMinX at 2022/7/19
@@ -13,7 +12,7 @@ public class KeyValueConfigs {
   public static KeyValueTool getKeyValueTools() {
     if (sKeyValueTool == null) {
       sKeyValueTool = new DefaultKeyValueTool();
-      sKeyValueTool.init(BuildConfig.LIBRARY_PACKAGE_NAME);
+      sKeyValueTool.init("KeyValueDefault");
     }
     return sKeyValueTool;
   }
