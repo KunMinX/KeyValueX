@@ -30,8 +30,8 @@ allprojects {
 The module build.gradle adds the following dependencies:
 
 ```
-implementation 'com.github.KunMinX.KeyValueX:keyvalue:2.2.7-beta'
-annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:2.2.7-beta'
+implementation 'com.github.KunMinX.KeyValueX:keyvalue:2.3.0-beta'
+annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:2.3.0-beta'
 ```
 
 &nbsp;
@@ -43,9 +43,9 @@ Step 1. Create the KeyValueGroup interface, for example
 ```java
 @KeyValueGroup
 public interface Test {
-  @KeyValue KeyValueInteger days();
-  @KeyValue KeyValueString accountId();
-  @KeyValue KeyValueSerializable<User> user();
+  KeyValueInteger days();
+  KeyValueString accountId();
+  KeyValueSerializable<User> user();
 }
 ```
 
