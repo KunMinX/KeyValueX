@@ -43,7 +43,7 @@ annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:2.3.0-beta'
 1.创建 KeyValueGroup 接口，例如
 
 ```java
-@KeyValueGroup
+@KeyValueX
 public interface Test {
   KeyValueInteger days();
   KeyValueString accountId();
