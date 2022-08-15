@@ -1,28 +1,20 @@
-package com.kunminx.keyvalue.config;
+package com.kunminx.sample.config;
 
 import com.kunminx.architecture.data.config.keyvalue.KeyValueBoolean;
 import com.kunminx.architecture.data.config.keyvalue.KeyValueSerializable;
 import com.kunminx.architecture.data.config.keyvalue.KeyValueString;
-import com.kunminx.keyvalue.annotation.KeyValue;
-import com.kunminx.keyvalue.annotation.KeyValueGroup;
-import com.kunminx.keyvalue.bean.User;
+import com.kunminx.keyvalue.annotation.KeyValueX;
+import com.kunminx.sample.bean.User;
 
 import java.util.List;
 
 /**
  * Create by KunMinX at 2022/7/20
  */
-@KeyValueGroup
+@KeyValueX
 public interface Test {
-  @KeyValue
   KeyValueBoolean test();
-
-  @KeyValue
   KeyValueString test1();
-
-  @KeyValue
   KeyValueSerializable<User> user();
-
-  @KeyValue
   KeyValueSerializable<List<User>> users();
 }

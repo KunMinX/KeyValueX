@@ -1,4 +1,4 @@
-package com.kunminx.keyvalue;
+package com.kunminx.sample;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -6,12 +6,12 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.kunminx.keyvalue.bean.User;
-import com.kunminx.keyvalue.config.Configs;
+import com.kunminx.sample.R;
+import com.kunminx.sample.bean.User;
+import com.kunminx.sample.config.Configs;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 

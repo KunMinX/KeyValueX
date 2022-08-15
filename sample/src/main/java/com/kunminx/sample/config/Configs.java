@@ -1,11 +1,11 @@
-package com.kunminx.keyvalue.config;
+package com.kunminx.sample.config;
 
 import com.kunminx.architecture.data.config.keyvalue.KeyValueBoolean;
 import com.kunminx.architecture.data.config.keyvalue.KeyValueInteger;
 import com.kunminx.architecture.data.config.keyvalue.KeyValueSerializable;
 import com.kunminx.architecture.data.config.keyvalue.KeyValueString;
 import com.kunminx.architecture.data.config.utils.KeyValueCreator;
-import com.kunminx.keyvalue.bean.User;
+import com.kunminx.sample.bean.User;
 
 /**
  * Create by KunMinX at 2022/7/19

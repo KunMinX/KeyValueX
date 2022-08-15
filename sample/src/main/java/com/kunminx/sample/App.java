@@ -1,4 +1,4 @@
-package com.kunminx.keyvalue;
+package com.kunminx.sample;
 
 import android.app.Application;
 

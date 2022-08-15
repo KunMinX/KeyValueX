@@ -1,8 +1,7 @@
 package com.kunminx.keyvalue.apt;
 
 import com.google.auto.service.AutoService;
-import com.kunminx.keyvalue.annotation.KeyValue;
-import com.kunminx.keyvalue.annotation.KeyValueGroup;
+import com.kunminx.keyvalue.annotation.KeyValueX;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
@@ -49,21 +48,30 @@ public class KeyValueProcessor extends AbstractProcessor {
     if (types == null || types.isEmpty()) {
       return false;
     }
-
-    Set<? extends Element> rootElements = rEnv.getElementsAnnotatedWith(KeyValueGroup.class);
-
+    Set<? extends Element> rootElements = rEnv.getElementsAnnotatedWith(KeyValueX.class);
     if (rootElements != null && !rootElements.isEmpty()) {
       for (Element element : rootElements) {
         String name = element.getSimpleName().toString();
         TypeSpec.Builder classBuilder = TypeSpec.classBuilder(name + "Impl").addModifiers(Modifier.PUBLIC);
         TypeElement typeElement = (TypeElement) element;
-
         List<? extends Element> members = mElementUtils.getAllMembers(typeElement);
         for (Element childElement : members) {
           if (childElement instanceof ExecutableElement) {
             ExecutableElement executableElement = (ExecutableElement) childElement;
-            KeyValue keyValue = executableElement.getAnnotation(KeyValue.class);
-            if (keyValue == null) continue;
+            String methodName = executableElement.getSimpleName().toString();
+            boolean isContinue = false;
+            switch (methodName) {
+              case "getClass":
+              case "hashCode":
+              case "equals":
+              case "toString":
+              case "notify":
+              case "notifyAll":
+              case "wait":
+                isContinue = true;
+              default:
+            }
+            if (isContinue) continue;
             String varName = executableElement.getSimpleName().toString();
             String backVarName = "_" + varName;
             TypeName typeName = ClassName.get(executableElement.getReturnType());
@@ -82,7 +90,6 @@ public class KeyValueProcessor extends AbstractProcessor {
         }
         classBuilder.addSuperinterface(typeElement.asType());
         TypeSpec typeSpec = classBuilder.build();
-
         JavaFile javaFile = JavaFile.builder(typeElement.getEnclosingElement().toString(), typeSpec)
                 .build();
         try {
@@ -92,15 +99,13 @@ public class KeyValueProcessor extends AbstractProcessor {
         }
       }
     }
-
     return true;
   }
 
   @Override
   public Set<String> getSupportedAnnotationTypes() {
     HashSet<String> hashSet = new HashSet<>();
-    hashSet.add(KeyValueGroup.class.getCanonicalName());
-    hashSet.add(KeyValue.class.getCanonicalName());
+    hashSet.add(KeyValueX.class.getCanonicalName());
     return hashSet;
   }
 }
