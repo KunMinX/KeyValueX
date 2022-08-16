@@ -12,7 +12,9 @@ Software development stories:[ã€ŠKeyValueX Project Approval & Iteration Processã
 
 2. Use annotations, but no need to initialize build, friendly to huge projects
 
-3. Support Java
+3. The embedded UUID automatically completes grouping and eliminates the configuration conflict of each component module
+
+4. Support Java
 
 &nbsp;
 
