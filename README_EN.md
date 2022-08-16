@@ -30,8 +30,8 @@ allprojects {
 The module build.gradle adds the following dependencies:
 
 ```
-implementation 'com.github.KunMinX.KeyValueX:keyvalue:2.3.0-beta'
-annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:2.3.0-beta'
+implementation 'com.github.KunMinX.KeyValueX:keyvalue:3.0.0-beta'
+annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:3.0.0-beta'
 ```
 
 &nbsp;
@@ -42,35 +42,27 @@ Step 1. Create the KeyValueGroup interface, for example
 
 ```java
 @KeyValueX
-public interface Test {
+public interface Configs {
   KeyValueInteger days();
   KeyValueString accountId();
   KeyValueSerializable<User> user();
 }
 ```
 
-Step 2. As usual, create a project configuration management class like Configs
-
-```java
-//Configs do not need to define a bunch of KEY, VALUE constants and get, put, init static methods, Just one KeyValues static variable:
-
-public class Configs {
-  public final static Test keyValues = KeyValueCreator.create(Test.class);
-}
-```
-
-Step 3. Read and write KeyValue through the get( ) set( ) method on the page, etc.
+Step 2. Read and write KeyValue through the get( ) set( ) method on the page.
 
 ```java
 public class MainActivity extends AppCompatActivity {
+  private final Configs configs = KeyValueProvider.get(Configs.class);
+  
   ...
+          
+  // persistent write
+  configs.user().set(user);
 
-  //Test persistent write
-  Configs.keyValues.user().set(u);
-
-  //Test read
-  Log.d("---title", Configs.keyValues.user().get().title);
-  Log.d("---content", Configs.keyValues.user().get().content);
+  // read
+  configs.user().get().title;
+  configs.user().get().content;
 }
 ```
 

@@ -32,8 +32,8 @@ allprojects {
 模块 build.gradle 添加如下依赖：
 
 ```
-implementation 'com.github.KunMinX.KeyValueX:keyvalue:2.3.0-beta'
-annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:2.3.0-beta'
+implementation 'com.github.KunMinX.KeyValueX:keyvalue:3.0.0-beta'
+annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:3.0.0-beta'
 ```
 
 &nbsp;
@@ -44,36 +44,27 @@ annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:2.3.0-beta'
 
 ```java
 @KeyValueX
-public interface Test {
+public interface Configs {
   KeyValueInteger days();
   KeyValueString accountId();
   KeyValueSerializable<User> user();
 }
 ```
 
-2.像往常一样，创建项目配置管理类，如 Configs
-
-```java
-//Configs 无须定义一堆 KEY、VALUE 常量和 get、put、init 静态方法，
-//只需一条 KeyValues 静态变量：
-
-public class Configs {
-  public final static Test keyValues = KeyValueCreator.create(Test.class);
-}
-```
-
-3.在页面等处通过 get( ) set( ) 方法读写 KeyValue
+2.在页面等处通过 get( ) set( ) 方法读写 KeyValue
 
 ```java
 public class MainActivity extends AppCompatActivity {
+  private final Configs configs = KeyValueProvider.get(Configs.class);
+  
   ...
 
-  //测试持久化写入
-  Configs.keyValues.user().set(u);
+  //写
+  configs.user().set(user);
 
-  //测试读取
-  Log.d("---title", Configs.keyValues.user().get().title);
-  Log.d("---content", Configs.keyValues.user().get().content);
+  //读
+  configs.user().get().title;
+  configs.user().get().content;
 }
 ```
 
