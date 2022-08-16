@@ -9,20 +9,22 @@ import com.kunminx.architecture.data.config.KeyValueConfigs;
  */
 public class KeyValueBoolean {
 
+  private final String groupName;
   private final String keyName;
   private Boolean value;
 
-  public KeyValueBoolean(@NonNull String keyName) {
+  public KeyValueBoolean(@NonNull String groupName, @NonNull String keyName) {
+    this.groupName = groupName;
     this.keyName = keyName;
   }
 
   public Boolean get() {
-    if (value == null) value = KeyValueConfigs.getKeyValueTools().getBoolean(keyName);
+    if (value == null) value = KeyValueConfigs.getKeyValueTool(groupName).getBoolean(keyName);
     return value;
   }
 
   public void set(@NonNull Boolean value) {
     this.value = value;
-    KeyValueConfigs.getKeyValueTools().put(keyName, value);
+    KeyValueConfigs.getKeyValueTool(groupName).put(keyName, value);
   }
 }

@@ -10,10 +10,10 @@ import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 
 import java.io.IOException;
+import java.security.MessageDigest;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
@@ -50,10 +50,11 @@ public class KeyValueProcessor extends AbstractProcessor {
       return false;
     }
     Set<? extends Element> rootElements = rEnv.getElementsAnnotatedWith(KeyValueX.class);
-    String uuid = UUID.randomUUID().toString();
     if (rootElements != null && !rootElements.isEmpty()) {
       for (Element element : rootElements) {
         String name = element.getSimpleName().toString();
+        String groupName = element.getAnnotation(KeyValueX.class).groupName();
+        if (groupName.isEmpty()) groupName = getMd5(element.getEnclosingElement().toString());
         TypeSpec.Builder classBuilder = TypeSpec.classBuilder(name + "Impl").addModifiers(Modifier.PUBLIC);
         TypeElement typeElement = (TypeElement) element;
         List<? extends Element> members = mElementUtils.getAllMembers(typeElement);
@@ -75,7 +76,6 @@ public class KeyValueProcessor extends AbstractProcessor {
             }
             if (isContinue) continue;
             String varName = executableElement.getSimpleName().toString();
-            String fullName = uuid + "_" + varName;
             String backVarName = "_" + varName;
             TypeName typeName = ClassName.get(executableElement.getReturnType());
             FieldSpec fb = FieldSpec.builder(typeName, backVarName)
@@ -85,7 +85,7 @@ public class KeyValueProcessor extends AbstractProcessor {
             MethodSpec mb = MethodSpec.methodBuilder(varName)
                     .addModifiers(Modifier.PUBLIC)
                     .returns(typeName)
-                    .addStatement("if($L == null) $L = new $T($S);", backVarName, backVarName, typeName, fullName)
+                    .addStatement("if($L == null) $L = new $T($S, $S);", backVarName, backVarName, typeName, groupName, varName)
                     .addStatement("return $L", backVarName)
                     .build();
             classBuilder.addMethod(mb);
@@ -110,5 +110,27 @@ public class KeyValueProcessor extends AbstractProcessor {
     HashSet<String> hashSet = new HashSet<>();
     hashSet.add(KeyValueX.class.getCanonicalName());
     return hashSet;
+  }
+
+  private String getMd5(String str) {
+    MessageDigest md5 = null;
+    try {
+      md5 = MessageDigest.getInstance("MD5");
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+    byte[] bs = new byte[0];
+    if (md5 != null) {
+      bs = md5.digest(str.getBytes());
+    }
+    StringBuilder sb = new StringBuilder(40);
+    for (byte x : bs) {
+      if ((x & 0xff) >> 4 == 0) {
+        sb.append("0").append(Integer.toHexString(x & 0xff));
+      } else {
+        sb.append(Integer.toHexString(x & 0xff));
+      }
+    }
+    return sb.toString();
   }
 }

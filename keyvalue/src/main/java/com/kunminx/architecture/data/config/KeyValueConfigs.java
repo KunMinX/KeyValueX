@@ -2,23 +2,26 @@ package com.kunminx.architecture.data.config;
 
 import com.kunminx.architecture.data.config.store.DefaultKeyValueTool;
 import com.kunminx.architecture.data.config.store.KeyValueTool;
-import com.kunminx.keyvalue.BuildConfig;
+
+import java.util.HashMap;
 
 /**
  * Create by KunMinX at 2022/7/19
  */
 public class KeyValueConfigs {
-  private static KeyValueTool sKeyValueTool;
+  private final static HashMap<String, KeyValueTool> sKeyValueTools = new HashMap<>();
 
-  public static KeyValueTool getKeyValueTools() {
-    if (sKeyValueTool == null) {
-      sKeyValueTool = new DefaultKeyValueTool();
-      sKeyValueTool.init(BuildConfig.LIBRARY_PACKAGE_NAME);
+  public static KeyValueTool getKeyValueTool(String groupName) {
+    KeyValueTool keyValueTool = sKeyValueTools.get(groupName);
+    if (keyValueTool == null) {
+      keyValueTool = new DefaultKeyValueTool();
+      keyValueTool.init(groupName);
+      sKeyValueTools.put(groupName, keyValueTool);
     }
-    return sKeyValueTool;
+    return keyValueTool;
   }
 
-  public static void setKeyValueTools(KeyValueTool mKeyValueTools) {
-    KeyValueConfigs.sKeyValueTool = mKeyValueTools;
+  public static void putKeyValueTool(KeyValueTool keyValueTool) {
+    sKeyValueTools.put(keyValueTool.getGroupName(), keyValueTool);
   }
 }

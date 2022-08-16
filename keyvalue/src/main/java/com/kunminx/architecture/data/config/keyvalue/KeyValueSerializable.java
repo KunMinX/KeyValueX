@@ -18,16 +18,18 @@ import java.nio.charset.StandardCharsets;
  */
 public class KeyValueSerializable<T> {
 
+  private final String groupName;
   private final String keyName;
   private T value;
 
-  public KeyValueSerializable(@NonNull String keyName) {
+  public KeyValueSerializable(@NonNull String groupName, @NonNull String keyName) {
+    this.groupName = groupName;
     this.keyName = keyName;
   }
 
   public T get() {
     if (value == null) {
-      String s = KeyValueConfigs.getKeyValueTools().getString(keyName);
+      String s = KeyValueConfigs.getKeyValueTool(groupName).getString(keyName);
       value = (T) base64StringToObject(s);
     }
     return value;
@@ -36,7 +38,7 @@ public class KeyValueSerializable<T> {
   public void set(@NonNull T value) {
     this.value = value;
     String s = objectToBase64String(value);
-    KeyValueConfigs.getKeyValueTools().put(keyName, s);
+    KeyValueConfigs.getKeyValueTool(groupName).put(keyName, s);
   }
 
   private String objectToBase64String(Object o) {
