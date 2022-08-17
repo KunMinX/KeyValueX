@@ -40,7 +40,7 @@ annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:3.1.0-beta'
 
 &nbsp;
 
-# 使用 3 步曲
+# 使用 2 步曲
 
 1.创建 KeyValueGroup 接口，例如
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-KeyValueX 默认使用 SharedPreference 读写，可根据 KeyValueTool 自行注入 MMKV 等实现（详见 MainActivity 示例）。
+KeyValueX 默认 SP 读写，可根据 KeyValueTool 自行注入 MMKV 等实现（详见 MainActivity 示例）。
 
 &nbsp;
 
