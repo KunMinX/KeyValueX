@@ -2,14 +2,11 @@ package com.kunminx.sample;
 
 import android.os.Bundle;
 import android.util.Log;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.kunminx.architecture.data.config.utils.KeyValueProvider;
 import com.kunminx.sample.bean.User;
 import com.kunminx.sample.config.Configs;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +24,9 @@ public class MainActivity extends AppCompatActivity {
     List<User> users = new ArrayList<>();
     users.add(u);
 
-    //默认 SP 读写。可注入自定义 KV 读写工具，例如 MMKV 详见 App.java
+    // 默认 SP 读写。可注入自定义 KV 读写工具，例如 MMKV 详见 App.java
     findViewById(R.id.btn_write).setOnClickListener(v -> {
+      configs.user().set(u);
       configs.users().set(users);
     });
     findViewById(R.id.btn_read).setOnClickListener(v -> {
