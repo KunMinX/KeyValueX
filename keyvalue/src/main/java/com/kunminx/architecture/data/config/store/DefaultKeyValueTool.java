@@ -70,4 +70,8 @@ public class DefaultKeyValueTool implements KeyValueTool {
   public String getString(@NonNull String keyName) {
     return mSPUtils.getString(keyName);
   }
+  @Override
+  public KeyValueTool getNewInstance() {
+    return new DefaultKeyValueTool();
+  }
 }

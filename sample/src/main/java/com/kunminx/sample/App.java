@@ -13,11 +13,7 @@ public class App extends Application {
     super.onCreate();
 
     // 如需使用 MMKV，您需额外配置 NDK
-    MMKVKeyValueTool mmkvTool = new MMKVKeyValueTool();
-
-    // 模块名根据实际情况配置，消除模块间 keyValue 冲突
-    mmkvTool.init(BuildConfig.LIBRARY_PACKAGE_NAME);
-    KeyValueConfigs.putKeyValueTool(mmkvTool);
+    KeyValueConfigs.setKeyValueToolImpl(new MMKVKeyValueTool());
   }
 
   @Override

@@ -94,6 +94,10 @@ public class MMKVKeyValueTool implements KeyValueTool, MMKVHandler, MMKVContentC
   public String getString(@NonNull String keyName) {
     return mmkv.getString(keyName, "");
   }
+  @Override
+  public KeyValueTool getNewInstance() {
+    return new MMKVKeyValueTool();
+  }
 
   @Override
   public void onContentChangedByOuterProcess(String mmapID) {
