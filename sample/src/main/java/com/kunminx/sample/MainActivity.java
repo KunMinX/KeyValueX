@@ -10,6 +10,9 @@ import com.kunminx.sample.config.Configs;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Create by KunMinX at 2022/7/19
+ */
 public class MainActivity extends AppCompatActivity {
 
   private final Configs configs = KeyValueProvider.get(Configs.class);
