@@ -14,7 +14,9 @@ Software development stories:[ã€ŠKeyValueX Project Approval & Iteration Processã
 
 3. Automatically complete grouping through the interface path MD5 to eliminate the configuration conflict of each component module
 
-4. Support Java
+4. uses SharedPreference to read and write by default, and can be injected into MMKV and other implementations according to KeyValueTool (see the mmkvSample branch).
+
+5. Support Java
 
 &nbsp;
 
@@ -55,7 +57,7 @@ Step 2. Read and write KeyValue through the get( ) set( ) method on the page.
 
 ```java
 public class MainActivity extends AppCompatActivity {
-  private final Configs configs = KeyValueProvider.get(Configs.class);
+  Configs configs = KeyValueProvider.get(Configs.class);
   
   ...
           
@@ -67,8 +69,6 @@ public class MainActivity extends AppCompatActivity {
   configs.user().get().content;
 }
 ```
-
-KeyValueX uses SharedPreference to read and write by default, and can be injected into MMKV and other implementations according to KeyValueTool (see the MainActivity example for details).
 
 &nbsp;
 

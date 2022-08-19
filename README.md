@@ -16,7 +16,9 @@
 
 3.通过接口路径 MD5 自动完成分组，消除各组件模块配置冲突
 
-4.支持 Java
+4.默认 SP 读写，可根据 KeyValueTool 自行注入 MMKV 等实现
+
+5.支持 Java
 
 &nbsp;
 
@@ -57,7 +59,7 @@ public interface Configs {
 
 ```java
 public class MainActivity extends AppCompatActivity {
-  private final Configs configs = KeyValueProvider.get(Configs.class);
+  Configs configs = KeyValueProvider.get(Configs.class);
   
   ...
 
@@ -69,8 +71,6 @@ public class MainActivity extends AppCompatActivity {
   configs.user().get().content;
 }
 ```
-
-KeyValueX 默认 SP 读写，可根据 KeyValueTool 自行注入 MMKV 等实现（详见 MainActivity 示例）。
 
 &nbsp;
 
