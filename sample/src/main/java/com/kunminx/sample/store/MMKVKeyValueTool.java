@@ -1,10 +1,7 @@
-/*
-package com.kunminx.keyvalue.store;
+package com.kunminx.sample.store;
 
 import android.util.Log;
-
 import androidx.annotation.NonNull;
-
 import com.kunminx.architecture.data.config.store.KeyValueTool;
 import com.kunminx.architecture.data.config.utils.AppUtils;
 import com.tencent.mmkv.MMKV;
@@ -13,15 +10,14 @@ import com.tencent.mmkv.MMKVHandler;
 import com.tencent.mmkv.MMKVLogLevel;
 import com.tencent.mmkv.MMKVRecoverStrategic;
 
-*/
-/*  如需使用 MMKV，您需额外配置 NDK
- *
+/**
+ * 如需使用 MMKV，您需额外配置 NDK
  * Create by syxc at 2022/7/19
- *//*
-
+ */
 public class MMKVKeyValueTool implements KeyValueTool, MMKVHandler, MMKVContentChangeNotification {
 
   private MMKV mmkv;
+  private String groupName;
 
   @Override
   public void init(@NonNull String moduleName) {
@@ -41,7 +37,12 @@ public class MMKVKeyValueTool implements KeyValueTool, MMKVHandler, MMKVContentC
     // content change notification
     MMKV.registerContentChangeNotify(this);
 
+    this.groupName = moduleName;
     mmkv = MMKV.mmkvWithID(moduleName);
+  }
+
+  @Override public String getGroupName() {
+    return groupName;
   }
 
   @Override
@@ -133,4 +134,4 @@ public class MMKVKeyValueTool implements KeyValueTool, MMKVHandler, MMKVContentC
         break;
     }
   }
-}*/
+}
