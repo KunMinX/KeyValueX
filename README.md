@@ -16,7 +16,7 @@
 
 3.通过接口路径 MD5 自动完成分组，消除各组件模块配置冲突
 
-4.默认 SP 读写，可根据 KeyValueTool 自行注入 MMKV 等实现
+4.默认 SP 读写，可根据 KeyValueTool 自行注入 MMKV 等实现(示例见 mmkvSample 分支)
 
 5.支持 Java
 
@@ -36,8 +36,8 @@ allprojects {
 模块 build.gradle 添加如下依赖：
 
 ```
-implementation 'com.github.KunMinX.KeyValueX:keyvalue:3.1.0-beta'
-annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:3.1.0-beta'
+implementation 'com.github.KunMinX.KeyValueX:keyvalue:3.2.0-beta'
+annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:3.2.0-beta'
 ```
 
 &nbsp;

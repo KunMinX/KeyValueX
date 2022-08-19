@@ -18,4 +18,5 @@ public interface KeyValueTool {
   Float getFloat(@NonNull String keyName);
   Boolean getBoolean(@NonNull String keyName);
   String getString(@NonNull String keyName);
+  KeyValueTool getNewInstance();
 }
