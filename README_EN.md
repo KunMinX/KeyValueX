@@ -34,8 +34,8 @@ allprojects {
 The module build.gradle adds the following dependencies:
 
 ```
-implementation 'com.github.KunMinX.KeyValueX:keyvalue:3.2.0-beta'
-annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:3.2.0-beta'
+implementation 'com.github.KunMinX.KeyValueX:keyvalue:3.3.0-beta'
+annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:3.3.0-beta'
 ```
 
 &nbsp;
