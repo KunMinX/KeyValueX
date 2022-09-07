@@ -51,7 +51,13 @@ public final class AppUtils {
         throw new NullPointerException("u should init first");
       }
       return (Application) app;
-    } catch (NoSuchMethodException | IllegalAccessException | ClassNotFoundException | InvocationTargetException e) {
+    } catch (NoSuchMethodException e) {
+      e.printStackTrace();
+    } catch (IllegalAccessException e) {
+      e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    } catch (InvocationTargetException e) {
       e.printStackTrace();
     }
     throw new NullPointerException("u should init first");

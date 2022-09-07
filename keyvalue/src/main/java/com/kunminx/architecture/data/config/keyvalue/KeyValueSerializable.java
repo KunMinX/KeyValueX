@@ -11,6 +11,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -51,7 +52,7 @@ public class KeyValueSerializable<T> {
       bos.close();
       s = Base64.encodeToString(bos.toByteArray(), Base64.DEFAULT);
     } catch (Exception e) {
-      Log.e("--- keyValue - objectToBase64String -- ", e.toString());
+      Log.e("--- keyValue ", "- objectToBase64String -- " + e);
     }
     return s;
   }
@@ -59,14 +60,14 @@ public class KeyValueSerializable<T> {
   private Object base64StringToObject(String s) {
     Object o = null;
     try {
-      byte[] gameByte = android.util.Base64.decode(s.getBytes(StandardCharsets.UTF_8), android.util.Base64.DEFAULT);
+      byte[] gameByte = android.util.Base64.decode(s.getBytes(Charset.forName("UTF-8")), android.util.Base64.DEFAULT);
       ByteArrayInputStream bis = new ByteArrayInputStream(gameByte);
       ObjectInputStream ois = new ObjectInputStream(bis);
       o = ois.readObject();
       bis.close();
       ois.close();
     } catch (Exception e) {
-      Log.e("--- keyValue - base64StringToObject -- ", e.toString());
+      Log.e("--- keyValue ", "- base64StringToObject -- " + e);
     }
     return o;
   }

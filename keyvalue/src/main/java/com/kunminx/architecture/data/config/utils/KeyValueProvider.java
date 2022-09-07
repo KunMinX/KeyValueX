@@ -21,7 +21,11 @@ public class KeyValueProvider {
       T t = clazz1.newInstance();
       keyValueGroup.put(clazzName, t);
       return t;
-    } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    } catch (IllegalAccessException e) {
+      e.printStackTrace();
+    } catch (InstantiationException e) {
       e.printStackTrace();
     }
     return (T) new Object();
