@@ -36,8 +36,8 @@ allprojects {
 模块 build.gradle 添加如下依赖：
 
 ```
-implementation 'com.github.KunMinX.KeyValueX:keyvalue:3.3.0-beta'
-annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:3.3.0-beta'
+implementation 'com.github.KunMinX.KeyValueX:keyvalue:3.5.0-beta'
+annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:3.5.0-beta'
 ```
 
 &nbsp;

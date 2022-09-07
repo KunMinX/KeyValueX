@@ -3,9 +3,9 @@ apply plugin: 'io.codearte.nexus-staging'
 buildscript {
     ext {
         appTargetSdk = 32
-        appMinSdk = 15
-        appVersionCode = 303000
-        appVersionName = "3.3.0-beta"
+        appMinSdk = 1
+        appVersionCode = 305000
+        appVersionName = "3.5.0-beta"
     }
     repositories {
         gradlePluginPortal()
