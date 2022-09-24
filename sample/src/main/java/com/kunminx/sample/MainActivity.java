@@ -21,6 +21,11 @@ import java.util.List;
  * Create by KunMinX at 2022/7/19
  */
 public class MainActivity extends AppCompatActivity {
+
+  //TODO tip: 混淆会使原来的类消失不见，由于生成类和接口处于同一目录，所以反射时需 keep 相应目录，
+  // 如不想 keep，则不可使用反射。在第一次创建接口时，build 一次，获取生成类来使用即可，例如：
+  // Configs configs = new ConfigsImpl();
+
   private final Configs configs = KeyValueProvider.get(Configs.class);
 
   @Override
