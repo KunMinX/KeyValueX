@@ -35,6 +35,8 @@ allprojects {
 
 模块 build.gradle 添加如下依赖：
 
+> 注意：建议配置在定义 @KeyValueX 接口所在的模块，以免发生 ClassNotFoundException & ClassCastException 情况
+
 ```
 implementation 'com.github.KunMinX.KeyValueX:keyvalue:3.6.0-beta'
 annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:3.6.0-beta'
