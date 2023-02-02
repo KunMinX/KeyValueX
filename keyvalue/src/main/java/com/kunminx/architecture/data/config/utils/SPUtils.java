@@ -175,10 +175,10 @@ public final class SPUtils {
    * Return the int value in sp.
    *
    * @param key The key of sp.
-   * @return the int value if sp exists or {@code -1} otherwise
+   * @return the int value if sp exists or {@code 0} otherwise
    */
   public int getInt(@NonNull final String key) {
-    return getInt(key, -1);
+    return getInt(key, 0);
   }
 
   /**
@@ -222,10 +222,10 @@ public final class SPUtils {
    * Return the long value in sp.
    *
    * @param key The key of sp.
-   * @return the long value if sp exists or {@code -1} otherwise
+   * @return the long value if sp exists or {@code 0} otherwise
    */
   public long getLong(@NonNull final String key) {
-    return getLong(key, -1L);
+    return getLong(key, 0L);
   }
 
   /**
@@ -269,10 +269,10 @@ public final class SPUtils {
    * Return the float value in sp.
    *
    * @param key The key of sp.
-   * @return the float value if sp exists or {@code -1f} otherwise
+   * @return the float value if sp exists or {@code 0f} otherwise
    */
   public float getFloat(@NonNull final String key) {
-    return getFloat(key, -1f);
+    return getFloat(key, 0f);
   }
 
   /**
