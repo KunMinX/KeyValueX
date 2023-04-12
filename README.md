@@ -35,7 +35,11 @@ allprojects {
 
 模块 build.gradle 添加如下依赖：
 
-> 注意：建议配置在定义 @KeyValueX 接口所在的模块，以免发生 ClassNotFoundException & ClassCastException 情况
+> 注意：
+> 
+> 1.建议配置在定义 @KeyValueX 接口所在的模块，以免发生 ClassNotFoundException & ClassCastException 情况
+> 
+> 2.在项目 proguard-rules.pro 中须配置 @KeyValue 接口所在目录，避免被混淆 
 
 ```
 implementation 'com.github.KunMinX.KeyValueX:keyvalue:3.6.0-beta'
