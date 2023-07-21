@@ -33,9 +33,16 @@ allprojects {
 
 模块 build.gradle 添加如下依赖：
 
-```
-见主分支 README ...
+> 注意：
+>
+> 1.建议配置在定义 @KeyValueX 接口所在的模块，以免发生 ClassNotFoundException & ClassCastException 情况
+>
+> 2.如使用 KeyValueProvider 获取 KeyValue 实例，需在项目 proguard-rules.pro 中须配置 @KeyValueX 接口所在目录，避免被混淆，
+> 如欲混淆，勿使用 KeyValueProvider，而是定义完 @KeyValueX 接口后，build 一次，生成 xxxImpl ，并通过 xxxImpl 赋值。
 
+```
+implementation 'com.github.KunMinX.KeyValueX:keyvalue:3.6.0-beta'
+annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:3.6.0-beta'
 ```
 
 &nbsp;
@@ -57,7 +64,11 @@ public interface Configs {
 
 ```java
 public class MainActivity extends AppCompatActivity {
-  private final Configs configs = KeyValueProvider.get(Configs.class);
+  //Configs 不可混淆：
+  //Configs configs = KeyValueProvider.get(Configs.class);
+
+  //Configs 可被混淆：
+  Configs configs = new ConfigImpl();
   
   ...
 
