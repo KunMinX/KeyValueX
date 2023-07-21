@@ -4,19 +4,17 @@
 
 ### [🌏 English README](https://github.com/KunMinX/KeyValueX/blob/main/README_EN.md)
 
-研发小故事：[《KeyValueX 立项 & 迭代心路历程》](https://juejin.cn/post/7121955840319291428)
-
 &nbsp;
 
 # 特性
 
-1.key、value、get、put、init 缩减为一，不再 KV 爆炸
+1.根据接口配置自动生成，无需手写 key、value、getter、setter、init 样板代码
 
 2.使用注解，但无需初始化 build，对巨型项目友好
 
 3.通过接口路径 MD5 自动完成分组，消除各组件模块配置冲突
 
-4.默认 SP 读写，可根据 KeyValueTool 自行注入 MMKV 等实现(示例见 mmkvSample 分支)
+4.KeyValueX 默认 SP 读写，可根据 KeyValueTool 自行注入 MMKV、DataStore 等实现（详见 Git MMKVSample 分支，App.java 示例）。
 
 5.支持 Java
 
@@ -26,25 +24,18 @@
 
 ```
 allprojects {
-    repositories {
-        // ...
-        maven { url 'https://www.jitpack.io' }
-    }
+  repositories {
+    // ...
+    maven { url 'https://www.jitpack.io' }
+  }
 }
 ```
 
 模块 build.gradle 添加如下依赖：
 
-> 注意：
-> 
-> 1.建议配置在定义 @KeyValueX 接口所在的模块，以免发生 ClassNotFoundException & ClassCastException 情况
-> 
-> 2.如使用 KeyValueProvider 获取 KeyValue 实例，需在项目 proguard-rules.pro 中须配置 @KeyValueX 接口所在目录，避免被混淆，
-> 如欲混淆，勿使用 KeyValueProvider，而是定义完 @KeyValueX 接口后，build 一次，生成 xxxImpl ，并通过 xxxImpl 赋值。
-
 ```
-implementation 'com.github.KunMinX.KeyValueX:keyvalue:3.6.0-beta'
-annotationProcessor 'com.github.KunMinX.KeyValueX:keyvalue-compiler:3.6.0-beta'
+见主分支 README ...
+
 ```
 
 &nbsp;
@@ -66,11 +57,7 @@ public interface Configs {
 
 ```java
 public class MainActivity extends AppCompatActivity {
-  //Configs 不可混淆：
-  //Configs configs = KeyValueProvider.get(Configs.class);
-  
-  //Configs 可被混淆：
-  Configs configs = new ConfigImpl();
+  private final Configs configs = KeyValueProvider.get(Configs.class);
   
   ...
 
